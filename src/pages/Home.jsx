@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import heroImage from '../assets/images/hero_image.jpg';
 
 const Home = () => {
+    const [imageLoaded, setImageLoaded] = useState(false);
+
     return (
         <div className="fade-in" style={styles.container}>
             <section style={styles.hero}>
+                <img
+                    src={heroImage}
+                    alt=""
+                    style={{
+                        ...styles.heroImage,
+                        opacity: imageLoaded ? 0.8 : 0, // Start invisible, fade in after load
+                    }}
+                    onLoad={() => setImageLoaded(true)}
+                />
                 <h1 style={styles.heroText}>
                     Constructing <br />
                     <span style={{ color: 'var(--color-accent)' }}>Intelligence</span>
@@ -56,15 +68,35 @@ const styles = {
         padding: '4rem 0',
         maxWidth: '1200px',
         margin: '0 auto',
+        position: 'relative', // Context for absolute positioning if needed, though hero handles it
     },
     hero: {
         marginBottom: '6rem',
+        position: 'relative', // Anchor for the absolute image
+        paddingRight: '2rem', // Ensure text doesn't hit the edge regardless
+    },
+    heroImage: {
+        position: 'absolute',
+        right: '-10%', // Slight overhang for dynamic feel
+        top: '50%',
+        transform: 'translateY(-50%)',
+        maxHeight: '120%', // Allow it to be tall
+        maxWidth: '60vw', // Controlled width relative to viewport to avoid taking over
+        minWidth: '400px', // Ensure visibility on larger screens
+        zIndex: -1, // Behind the text
+        maskImage: 'linear-gradient(to right, transparent 0%, black 60%)',
+        WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 60%)',
+        transition: 'opacity 2.5s ease-out',
+        objectFit: 'cover',
+        pointerEvents: 'none', // Don't block any interactions
     },
     heroText: {
         fontSize: 'clamp(3rem, 8vw, 6rem)',
         lineHeight: '1.1',
         letterSpacing: '-0.02em',
         marginBottom: '2rem',
+        position: 'relative', // Ensure it stays above z-index -1
+        zIndex: 2,
     },
     subtitle: {
         fontFamily: 'var(--font-body)',
@@ -73,6 +105,8 @@ const styles = {
         color: 'var(--color-text-muted)',
         borderLeft: '2px solid var(--color-accent)',
         paddingLeft: '1.5rem',
+        position: 'relative',
+        zIndex: 2,
     },
     divider: {
         height: '1px',

@@ -36,7 +36,7 @@ const Layout = ({ children }) => {
                 {children}
             </main>
             <footer style={styles.footer}>
-                <p style={styles.copyright}>© 2024 Portfolio. All Rights Reserved.</p>
+                <p style={styles.copyright}>© 2025 Anood Fatema Khanam. All Rights Reserved.</p>
             </footer>
         </div>
     );
