@@ -6,6 +6,7 @@ const Home = () => {
 
     return (
         <div className="fade-in" style={styles.container}>
+            <div style={styles.branding}>Anood F.K</div>
             <section style={styles.hero}>
                 <img
                     src={heroImage}
@@ -21,7 +22,7 @@ const Home = () => {
                     <span style={{ color: 'var(--color-accent)' }}>Intelligence</span>
                 </h1>
                 <p style={styles.subtitle}>
-                    Investigating the boundaries between computational logic and human cognition.
+                    To understand how artificial intelligence shapes human reasoning, agency, and ethical responsibility — and how we should design systems that preserve human judgment rather than replace it.
                 </p>
             </section>
 
@@ -31,10 +32,7 @@ const Home = () => {
                 <div style={styles.bioLabel}>About the Curator</div>
                 <div style={styles.bioContent}>
                     <p>
-                        I am a Computer Science student and researcher dedicated to understanding the
-                        foundations of artificial intelligence. My work is driven by a desire to
-                        synthesize theoretical frameworks with practical applications, creating systems
-                        that are not only powerful but also interpretable and aligned with human values.
+                        I am a computer science student and researcher focused on the foundations of artificial intelligence. My interests lie in examining how computational systems are designed, understood, and evaluated, with particular attention to interpretability, ethical responsibility, and their relationship to human judgment.
                     </p>
                 </div>
             </section>
@@ -70,6 +68,17 @@ const styles = {
         margin: '0 auto',
         position: 'relative', // Context for absolute positioning if needed, though hero handles it
     },
+    branding: {
+        position: 'absolute',
+        top: '0',
+        left: '0',
+        fontFamily: 'var(--font-heading)',
+        fontSize: '1.1rem',
+        fontWeight: '500',
+        letterSpacing: '-0.01em',
+        color: 'var(--color-text)',
+        zIndex: 10,
+    },
     hero: {
         marginBottom: '6rem',
         position: 'relative', // Anchor for the absolute image
@@ -80,7 +89,7 @@ const styles = {
         right: '-10%', // Slight overhang for dynamic feel
         top: '50%',
         transform: 'translateY(-50%)',
-        maxHeight: '120%', // Allow it to be tall
+        height: '160%', // Elongate the image
         maxWidth: '60vw', // Controlled width relative to viewport to avoid taking over
         minWidth: '400px', // Ensure visibility on larger screens
         zIndex: -1, // Behind the text
